@@ -1,0 +1,121 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.header{
+    text-align: center;
+    font-size: 2em;
+    background-color: rgb(66,15,6);
+    color: white;
+    padding: 18px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#add-book{
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: rgb(0,41,7);
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 10px 20px;
+    margin: 32px auto;
+    display: block;
+}
+
+ul{
+    /* background-color: rgb(0,41,7); */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+    padding: 12px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+li{
+    background-color: white;
+    padding: 12px;
+    border-radius: 5px;
+    list-style-type: none;
+    background-color: rgb(237,143,1);
+}
+
+.book-card{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+
+}
+
+.top{
+    display: flex;
+    gap: 6px;
+}
+
+.bot{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    justify-content: center;
+    margin-top: auto;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: rgb(0,41,7);
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 10px 20px;
+}
+
+.book-id{
+    font-size: .75em;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 36px;
+    border-radius: 5px;
+    border: none;
+}
+
+input{
+    margin-bottom: 16px;
+    border: none;
+    padding: 8px;
+    border-radius: 4px; 
+    background-color: rgb(228, 228, 228);
+}
+
+#cancel{
+    margin-bottom: 4px;
+    margin-top: 8px;
+    background-color: rgb(189, 189, 189);
+}
+
+form div{
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+dialog{
+    border: none;
+    padding: 0;
+    border-radius: 5px;
+    margin: auto;
+}
+
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+}
