@@ -5,6 +5,15 @@ const cancelButton = document.getElementById("cancel");
 const form = document.getElementById("add-book-form");
 const bookList = document.getElementById("book-list");
 
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+
+const titleError = document.querySelector("#title + span.error");
+const authorError = document.querySelector("#author + span.error");
+const pagesError = document.querySelector("#pages + span.error");
+
+
 class Library {
     constructor() {
         this.books = [];
@@ -83,17 +92,38 @@ addBookButton.addEventListener("click", () => {
 });
 
 cancelButton.addEventListener("click", () => {
+    titleError.className = "error";
+    authorError.className = "error";
+    pagesError.className = "error";
+    titleError.textContent = "";
+    authorError.textContent = "";
+    pagesError.textContent = "";
+
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    
     addBookDialog.close();
 });
 
 
 form.addEventListener("submit", (event) => {
+    if ((!titleInput.validity.valid) || (!authorInput.validity.valid) || (!pagesInput.validity.valid)) {
+        event.preventDefault();
+        showError();
+        return;
+    }
     event.preventDefault();
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     myLibrary.addBook(new Book(title, author, pages));
     myLibrary.displayBooks();
+
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+
     addBookDialog.close();
 });
 
@@ -107,5 +137,62 @@ bookList.addEventListener("click", (event) => {
         myLibrary.toggleReadStatus(bookCard.dataset.id);
     }
 });
+
+
+titleInput.addEventListener("input", (event) => {
+    if (titleInput.validity.valid) {
+        titleError.textContent = "";
+        titleError.className = "error";
+    } else {
+        showError();
+    }
+});
+
+authorInput.addEventListener("input", (event) => {
+    if (authorInput.validity.valid) {
+        authorError.textContent = "";
+        authorError.className = "error";
+    } else {
+        showError();
+    }
+});
+
+pagesInput.addEventListener("input", (event) => {
+    if (pagesInput.validity.valid) {
+        pagesError.textContent = "";
+        pagesError.className = "error";
+    } else {
+        showError();
+    }
+});
+
+
+function showError(){
+    if (titleInput.validity.valueMissing) {
+        titleError.textContent = "Please enter the book title.";
+        titleError.className = "error active";
+    } else {
+        titleError.textContent = "";
+    }
+
+    if (authorInput.validity.valueMissing) {
+        authorError.textContent = "Please enter the author's name.";
+        authorError.className = "error active";
+
+    } else {
+        authorError.textContent = "";
+    }
+
+    if (pagesInput.validity.valueMissing) {
+        pagesError.textContent = "Please enter the number of pages.";
+        pagesError.className = "error active";
+    } else if (pagesInput.validity.rangeUnderflow) {
+        pagesError.textContent = "Number of pages must be at least 1.";
+        pagesError.className = "error active";
+    } else {
+        pagesError.textContent = "";
+    }
+
+}
 
 myLibrary.displayBooks();

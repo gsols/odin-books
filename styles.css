@@ -91,11 +91,30 @@ form{
 }
 
 input{
-    margin-bottom: 16px;
     border: none;
     padding: 8px;
-    border-radius: 4px; 
     background-color: rgb(228, 228, 228);
+}
+
+input:invalid{
+    border: #990000 solid 1px;
+    background-color: #ffdddd;
+}
+
+input:focus:invalid{
+    outline: none;
+}
+
+.error{
+    margin-bottom: 16px;
+    color: #ffffff;
+    background-color: #990000;
+    border-radius: 0 0 5px 5px;
+    
+}
+
+.error.active{
+    padding: 0.3em;
 }
 
 #cancel{
