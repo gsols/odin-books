@@ -92,12 +92,11 @@ addBookButton.addEventListener("click", () => {
 });
 
 cancelButton.addEventListener("click", () => {
+    titleError.className = "error";
+    authorError.className = "error";
+    pagesError.className = "error";
+    
     addBookDialog.close();
-
-    titleInput.value = "";
-    authorInput.value = "";
-    pagesInput.value = "";
-
 });
 
 
