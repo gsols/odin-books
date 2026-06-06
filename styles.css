@@ -107,9 +107,10 @@ input:focus:invalid{
 
 .error{
     margin-bottom: 16px;
-    color: #ffffff;;
+    color: #ffffff;
     background-color: #990000;
     border-radius: 0 0 5px 5px;
+    
 }
 
 .error.active{

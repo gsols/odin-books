@@ -95,6 +95,9 @@ cancelButton.addEventListener("click", () => {
     titleError.className = "error";
     authorError.className = "error";
     pagesError.className = "error";
+    titleError.textContent = "";
+    authorError.textContent = "";
+    pagesError.textContent = "";
     
     addBookDialog.close();
 });
