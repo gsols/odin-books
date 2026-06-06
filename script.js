@@ -98,17 +98,22 @@ cancelButton.addEventListener("click", () => {
     titleError.textContent = "";
     authorError.textContent = "";
     pagesError.textContent = "";
+
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
     
     addBookDialog.close();
 });
 
 
 form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!titleInput.validity.valid || !authorInput.validity.valid || !pagesInput.validity.valid) {
+    if ((!titleInput.validity.valid) || (!authorInput.validity.valid) || (!pagesInput.validity.valid)) {
         event.preventDefault();
         showError();
+        return;
     }
+    event.preventDefault();
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
